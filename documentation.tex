@@ -1,18 +1,17 @@
-\documentclass[11pt, oneside]{article}
+\documentclass[a4paper]{report}
+\usepackage{titlesec}
+
 \usepackage[margin=1.5in]{geometry}
+\usepackage[italian]{babel}
 \usepackage{graphicx} % Required for inserting images
 \usepackage[parfill]{parskip}
 \usepackage{amssymb}
 
-\newcommand{\projectName}{No Future Project}
+\newcommand{\projectName}{No Future Project} % Use this to put the project name
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge} % Remove the word Chapter
 
-\title{
-        
-    \textbf{\projectName}
-    \thanks{Nome provvisorio}
-
-    \large A cyberpunk CRPG game
-}
+\title{ \textbf{\projectName} \\ \textit{A cyberpunk CRPG game}}
 \author{created by Matteo Calvanico}
 \date{}
 
@@ -21,7 +20,10 @@
 \maketitle
 
 \pagebreak
-\section{Overview}
+\tableofcontents
+\pagebreak
+
+\chapter{Overview}
 \textbf{\projectName} è un CRPG, quindi un gioco di ruolo che simula i classici giochi da tavolo.
 
 L'obiettivo che ci siamo posti è di creare un gioco che strizza l'occhio a \textit{Fallout 1/2 e Baldur's Gate: Enhanced Edition}, con uno stile grafico e di design "retrò" permettendoci di concentrare le nostre forze sulla parte narrativa e di quest design.
@@ -31,32 +33,32 @@ Il gioco affronterà e analizzerà temi come il transumanesimo, l'unione uomo-ma
 
 
 
-\section{Gameplay}
+\chapter{Gameplay}
 In questa sezione verranno analizzati tutti gli elementi di gameplay.
 %TODO
 \pagebreak % da rimuovere dopo aver scritto
 
-\section{Plot}
+\chapter{Plot}
 In questa sezione sarà presente la sceneggiatura, inserendo anche dove, quando e in che contesto avvengono le diverse parti.
 %TODO
 \pagebreak % da rimuovere dopo aver scritto
 
-\section{World Building}
+\chapter{World Building}
 In questa sezione si descrive il mondo di gioco, dalle più piccole sfacettature fino alle varie fazioni e lore.
-\subsection{The city}
+\section{The city}
 %TODO 
 
-\subsection{Factions}
-\subsubsection{I Figli della Carne}
+\section{Factions}
+\subsection{I Figli della Carne}
 I figli della Carne sono una setta fanatico/religiosa che ripudia la tecnologia degli innesti, infatti crede che in un futuro non troppo lontano tutta la tecnologia cesserà di funzionare, portando alla morte di tutti coloro che hanno deciso di "dilaniare" il proprio corpo inserendosi potenziamenti.
 
 Tutti gli NPC di questa fazione sono immuni agli \textit{impulsi elettromagnetici (o EMP)} e per questo ne abusano in combattimento, rendendo inutile un tipo di gameplay basato troppo sulla tecnologia e innesti.
 Essendo le granate e i jammer EMP illegali loro sono gli unici che le vendono e per questo sono considerati pericolosi e paragonati spesso ad un gruppo terroristico.
 
-\paragraph{Ending}
+\subsubsection{Ending}
 Se si viene accettati da questa fazione (necessario avere pochi innesti) è possibile seguire diverse quest-line per finire il gioco allineandosi a loro. Questo porterà ad un finale con karma negativo, infatti lo scopo della fazione è di creare diverse \textit{HANE (High Altitude Nuclear Explosion)} generando impulsi EMP in tutto il globo, avverando la loro profezia dove tutta la tecnologia del mondo cesserà di esistere.
 
-\subsection{Idee}
+\chapter{Idee}
 Qui si inseriscono le idee da sviluppare e non ancora ben definite
 
 
