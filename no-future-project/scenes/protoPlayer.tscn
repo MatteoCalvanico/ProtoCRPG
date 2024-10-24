@@ -10,14 +10,26 @@ height = 14.0
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(-1, -1)
 scale = Vector2(2, 2)
 script = ExtResource("1_qqe3f")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(7, -0.5)
+position = Vector2(1, -21)
 texture = ExtResource("1_6n8n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(6, 19)
+position = Vector2(0.5, -1.5)
 shape = SubResource("CapsuleShape2D_uni4x")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.644076, 0.101785, 1.44392e-07, 1)
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
