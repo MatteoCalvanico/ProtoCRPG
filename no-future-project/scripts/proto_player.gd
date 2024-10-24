@@ -3,9 +3,16 @@ extends CharacterBody2D
 
 const SPEED = 200
 @onready var navigator = $NavigationAgent2D
+@onready var camera = $Camera2D
 
 func _physics_process(delta: float) -> void:
-	# Move with Mouse [NEED FIX: si blocca negli angoli e il navigator non individua i muri]
+	# Camera Zoom
+	if Input.is_action_just_pressed("scrollUp") && camera.zoom <= Vector2(2,2):
+		camera.zoom *= 1.1
+	elif  Input.is_action_just_pressed("scrollDown") && camera.zoom >= Vector2(0.5,0.5):
+		camera.zoom *= 0.9
+	
+	# Move with Mouse
 	if Input.is_action_pressed("mouseSX"):
 		var mouse_position = get_global_mouse_position()
 		navigator.target_position = mouse_position

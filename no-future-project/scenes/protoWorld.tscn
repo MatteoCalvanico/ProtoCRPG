@@ -8,18 +8,6 @@
 y_sort_enabled = true
 script = ExtResource("1_5nkip")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(575, 334)
-
-[node name="Layer2" type="TileMapLayer" parent="."]
-z_index = 2
-y_sort_enabled = true
-position = Vector2(534, 235)
-scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAD7/wAAAAABAAAAAAD7////AAABAAAAAAD7//7/AAABAAAAAAD7//3/AAABAAAAAAD8//3/AAABAAAAAAD9//3/AAABAAAAAAD+//3/AAABAAAAAAD7/wEAAAABAAAAAAADAAsAAAABAAAAAAADAA4AAAABAAAAAAADAA0AAAABAAAAAAADAAgAAAABAAAAAAADAAkAAAABAAAAAAD8/wEAAAABAAAAAAD///3/AAABAAAAAAD///7/AAAGAAAAAAD/////AAAGAAAAAAAHAAEAAAABAAAAAAAKAP7/AAABAAAAAAA=")
-tile_set = ExtResource("2_1lmqu")
-y_sort_origin = 2
-
 [node name="Layer1" type="TileMapLayer" parent="."]
 z_index = 1
 y_sort_enabled = true

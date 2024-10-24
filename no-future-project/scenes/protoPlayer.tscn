@@ -32,4 +32,7 @@ debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.644076, 0.101785, 1.44392e-07, 1)
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -22)
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
