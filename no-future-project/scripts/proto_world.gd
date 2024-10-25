@@ -19,10 +19,10 @@ const boundery = Vector2i(0,1)
 func _ready() -> void:
 	place_boundaries()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
+ # Needed for create the world boundaries
 func place_boundaries():
 	var offsets = [ Vector2i(0,-1), Vector2i(0,1), Vector2i(-1,0), Vector2i(1,0)]
 	var usedCells = layer0.get_used_cells()
