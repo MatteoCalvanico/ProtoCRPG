@@ -22,7 +22,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
- # Needed for create the world boundaries
+# Needed for create the world boundaries
 func place_boundaries():
 	var offsets = [ Vector2i(0,-1), Vector2i(0,1), Vector2i(-1,0), Vector2i(1,0)]
 	var usedCells = layer0.get_used_cells()
@@ -34,8 +34,3 @@ func place_boundaries():
 			# Empty spot (method return -1 if cell do not exist)
 			if layer0.get_cell_source_id(current_spot) == -1:
 				layer0.set_cell(current_spot, 0, boundery)
-	
-func draw_block():
-	#Let's draw every single block in a line
-	for n in range(6):
-		layer0.set_cell(Vector2i(8,n), 0, Vector2i(n,0))

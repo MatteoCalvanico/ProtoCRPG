@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://clf5scx5xs1ch"]
+
+[ext_resource type="Script" path="res://scripts/proto_enemy.gd" id="1_lwn06"]
+[ext_resource type="Texture2D" uid="uid://k7ye0le3kd1u" path="res://tileset/protoEnemy.png" id="1_us2rf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a0ikj"]
+radius = 7.0
+height = 18.0
+
+[node name="protoEnemy" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(-1, -1)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_lwn06")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(-14, -69)
+scale = Vector2(1.69508, 1.45238)
+texture = ExtResource("1_us2rf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -7)
+shape = SubResource("CapsuleShape2D_a0ikj")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 5.0
+path_postprocessing = 1
+radius = 14.0
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(1, 1, 0, 1)

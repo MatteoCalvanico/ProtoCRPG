@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 		
 		# Only update the target location if navigator is finished OR player wants to change location
 		if !isMoving || Input.is_action_just_pressed("mouseSX"):
-			navigator.target_position = get_global_mouse_position()
+			navigator.target_position = self.get_global_mouse_position()
 			
 		isMoving = true
 		
@@ -35,6 +35,7 @@ func _physics_process(delta: float) -> void:
 			isMoving = false
 			return
 		
+		# Our navigator is set to avoid obstacle
 		if navigator.avoidance_enabled:
 			navigator.set_velocity(new_velocity)
 		else:
