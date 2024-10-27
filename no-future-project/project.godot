@@ -69,6 +69,11 @@ scrollDown={
 ]
 }
 
+[layer_names]
+
+avoidance/layer_1="Player"
+avoidance/layer_2="Enemy"
+
 [navigation]
 
 2d/default_edge_connection_margin=16.0

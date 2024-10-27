@@ -3,7 +3,7 @@ extends Node2D
 # Our layers
 @onready var layer0 = $Layer0
 @onready var layer1 = $Layer1
-enum layers { layer0, layer1}
+enum layers {layer0, layer1}
 
 # Our blocks (Atlas coords)
 const blue = Vector2i(0,0)
