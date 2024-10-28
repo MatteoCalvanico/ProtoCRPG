@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdcb6ud3ys4rm"]
+
+[ext_resource type="Texture2D" uid="uid://eb6amlevpk8w" path="res://tileset/protoNpc.png" id="1_6ajys"]
+[ext_resource type="Script" path="res://scripts/proto_npc.gd" id="1_581wd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nin18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nab5m"]
+size = Vector2(34, 109)
+
+[node name="ProtoNPC" type="CharacterBody2D"]
+collision_mask = 3
+script = ExtResource("1_581wd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("1_6ajys")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 40)
+shape = SubResource("CapsuleShape2D_nin18")
+
+[node name="ClickArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(-5, -0.5)
+shape = SubResource("RectangleShape2D_nab5m")
