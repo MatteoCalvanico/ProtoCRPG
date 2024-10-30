@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var click_area = $ClickArea
+@onready var text_label = $TextLabel
 
 # MAX distance from the NPC to be able to interact with it
 @export var interaction_distance = 70.0 
