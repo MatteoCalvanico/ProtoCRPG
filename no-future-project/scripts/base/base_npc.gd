@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var click_area = $ClickArea
 @onready var text_label = $TextLabel
+@onready var text_timer = $TextTimer
 
 # MAX distance from the NPC to be able to interact with it
 @export var interaction_distance = 70.0 
@@ -26,3 +27,7 @@ func _npc_clicked(viewport: Viewport, event: InputEvent, shape_idx: int):
 # Virtual function to be overriden by child classes
 func _interact():
 	pass
+
+# Hide text after timer expires
+func _on_text_timer_timeout() -> void:
+	text_label.text = ""
