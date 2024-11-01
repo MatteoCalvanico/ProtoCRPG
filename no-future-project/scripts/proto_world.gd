@@ -5,6 +5,15 @@ extends Node2D
 @onready var layer1 = $Layer1
 enum layers {layer0, layer1}
 
+# NPCs
+@onready var npcs = $NPCs.get_children()
+
+# Player
+@onready var player = $Player
+
+# Enemies
+@onready var enemies = $Enemies.get_children()
+
 # Our blocks (Atlas coords)
 const blue = Vector2i(0,0)
 const red = Vector2i(1,0)

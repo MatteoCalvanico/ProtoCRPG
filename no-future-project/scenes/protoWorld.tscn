@@ -45,14 +45,16 @@ position = Vector2(632, 654)
 script = ExtResource("5_2jip4")
 player = NodePath("../../Player")
 
-[node name="protoEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="protoEnemy" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
 position = Vector2(243, 577)
-target = NodePath("../Player")
+target = NodePath("../../Player")
 
-[node name="protoEnemy2" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
+[node name="protoEnemy2" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
 position = Vector2(294, 549)
-target = NodePath("../Player")
+target = NodePath("../../Player")
 
-[node name="protoEnemy3" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
+[node name="protoEnemy3" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
 position = Vector2(348, 517)
-target = NodePath("../Player")
+target = NodePath("../../Player")
