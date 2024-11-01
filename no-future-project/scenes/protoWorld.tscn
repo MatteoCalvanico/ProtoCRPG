@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cr5yun0eyyrp6"]
+[gd_scene load_steps=8 format=4 uid="uid://cr5yun0eyyrp6"]
 
 [ext_resource type="Script" path="res://scripts/proto_world.gd" id="1_5nkip"]
 [ext_resource type="TileSet" uid="uid://7ajxq63cp64r" path="res://tileset/protoTexture.tres" id="2_1lmqu"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdcb6ud3ys4rm" path="res://scenes/protoNpc.tscn" id="4_8mojw"]
 [ext_resource type="PackedScene" uid="uid://clf5scx5xs1ch" path="res://scenes/protoEnemy.tscn" id="4_uc0up"]
 [ext_resource type="Script" path="res://scripts/proto_other_npc.gd" id="5_2jip4"]
+[ext_resource type="PackedScene" uid="uid://da1ilx28t303s" path="res://ui/protoUI.tscn" id="7_lqdrp"]
 
 [node name="ProtoWorld" type="Node2D"]
 y_sort_enabled = true
@@ -58,3 +59,5 @@ target = NodePath("../../Player")
 [node name="protoEnemy3" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
 position = Vector2(348, 517)
 target = NodePath("../../Player")
+
+[node name="GUI" parent="." instance=ExtResource("7_lqdrp")]
