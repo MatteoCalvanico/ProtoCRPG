@@ -1,81 +1,96 @@
-[gd_scene format=3 uid="uid://da1ilx28t303s"]
+[gd_scene load_steps=2 format=3 uid="uid://da1ilx28t303s"]
+
+[ext_resource type="Script" path="res://scripts/proto_ui.gd" id="1_wsisb"]
 
 [node name="GUI" type="CanvasLayer"]
+script = ExtResource("1_wsisb")
 
-[node name="APContainer" type="GridContainer" parent="."]
+[node name="Control" type="Control" parent="."]
+y_sort_enabled = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="APContainer" type="GridContainer" parent="Control"]
 z_index = 1
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -151.0
-offset_top = -56.0
+offset_top = -59.0
 offset_right = 151.0
-offset_bottom = -25.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 0
 columns = 9
 
-[node name="ActionPoint1" type="ColorRect" parent="APContainer"]
+[node name="ActionPoint1" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0, 0, 1, 1)
 
-[node name="ActionPoint2" type="ColorRect" parent="APContainer"]
+[node name="ActionPoint2" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0, 0, 1, 1)
 
-[node name="ActionPoint3" type="ColorRect" parent="APContainer"]
+[node name="ActionPoint3" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0, 0, 1, 1)
 
-[node name="ActionPoint4" type="ColorRect" parent="APContainer"]
+[node name="ActionPoint4" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0, 0, 1, 1)
 
-[node name="ActionPoint5" type="ColorRect" parent="APContainer"]
+[node name="ActionPoint5" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0, 0, 1, 1)
 
-[node name="ActionPoint6" type="ColorRect" parent="APContainer"]
+[node name="ActionPoint6" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0, 0, 1, 1)
 
-[node name="ActionPoint7" type="ColorRect" parent="APContainer"]
+[node name="ActionPoint7" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0, 0, 1, 1)
 
-[node name="ActionPoint8" type="ColorRect" parent="APContainer"]
+[node name="ActionPoint8" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0, 0, 1, 1)
 
-[node name="ActionPoint9" type="ColorRect" parent="APContainer"]
+[node name="ActionPoint9" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 color = Color(0, 0, 1, 1)
 
-[node name="CombatContainer" type="GridContainer" parent="."]
+[node name="CombatContainer" type="GridContainer" parent="Control"]
 z_index = 1
 custom_minimum_size = Vector2(200, 80)
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -200.0
-offset_top = -80.0
+offset_top = -87.0
+offset_bottom = -7.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="CombatButtons" type="VBoxContainer" parent="CombatContainer"]
+[node name="CombatButtons" type="VBoxContainer" parent="Control/CombatContainer"]
 layout_direction = 3
 layout_mode = 2
 size_flags_horizontal = 4
@@ -83,29 +98,14 @@ size_flags_vertical = 8
 theme_override_constants/separation = 13
 alignment = 1
 
-[node name="Attack" type="Button" parent="CombatContainer/CombatButtons"]
+[node name="Attack" type="Button" parent="Control/CombatContainer/CombatButtons"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "Attack"
 
-[node name="Skip" type="Button" parent="CombatContainer/CombatButtons"]
+[node name="Skip" type="Button" parent="Control/CombatContainer/CombatButtons"]
 layout_mode = 2
 text = "Skip"
 
-[node name="Background" type="AspectRatioContainer" parent="."]
-custom_minimum_size = Vector2(0, 80)
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-ratio = 10.0
-stretch_mode = 3
-alignment_vertical = 0
-
-[node name="ColorRect" type="ColorRect" parent="Background"]
-layout_mode = 2
-color = Color(0.194349, 0.194349, 0.194349, 1)
+[connection signal="pressed" from="Control/CombatContainer/CombatButtons/Attack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Control/CombatContainer/CombatButtons/Skip" to="." method="_on_skip_pressed"]
