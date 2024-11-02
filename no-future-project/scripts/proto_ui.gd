@@ -14,7 +14,7 @@ extends CanvasLayer
 
 # Player enter in ATTACK MODE - Preventing clicks from passing through the GUI [Block movement]
 func _on_attack_pressed() -> void:
-	MessageBus.mouse_in_ui.emit()
+	MessageBus.attack_mode_on.emit()
 	attack_button.disabled = true
 	skip_button.disabled = false
 	
@@ -23,7 +23,7 @@ func _on_attack_pressed() -> void:
 
 # Player exit from ATTACK MODE - Now is possible to move around - STOP preventing clicks from passing through the GUI
 func _on_skip_pressed() -> void:
-	MessageBus.mouse_out_ui.emit()
+	MessageBus.attack_mode_off.emit()
 	attack_button.disabled = false
 	skip_button.disabled = true
 	

@@ -10,8 +10,8 @@ var isUI = false
 
 
 func _ready() -> void:
-	MessageBus.mouse_in_ui.connect(update)
-	MessageBus.mouse_out_ui.connect(reset)
+	MessageBus.attack_mode_on.connect(update)
+	MessageBus.attack_mode_off.connect(reset)
 
 func _physics_process(delta: float) -> void:
 	

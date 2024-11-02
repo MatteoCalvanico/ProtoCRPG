@@ -1,6 +1,6 @@
 extends Node
 
 ## !!! Signals !!!
-# Is mouse in UI ? - Preventing clicks from passing through the GUI 
-signal mouse_in_ui
-signal mouse_out_ui
+# Player enter/exit from ATTACK MODE - Use it to prevent clicks from passing through the GUI and block the scene
+signal attack_mode_on
+signal attack_mode_off
