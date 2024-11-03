@@ -34,47 +34,47 @@ columns = 9
 [node name="ActionPoint1" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0.194349, 0.194349, 0.194349, 1)
 
 [node name="ActionPoint2" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="ActionPoint3" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="ActionPoint4" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="ActionPoint5" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="ActionPoint6" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="ActionPoint7" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="ActionPoint8" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="ActionPoint9" type="ColorRect" parent="Control/APContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
-color = Color(0, 0, 1, 1)
+color = Color(0.196078, 0.196078, 0.196078, 1)
 
 [node name="CombatContainer" type="GridContainer" parent="Control"]
 z_index = 1

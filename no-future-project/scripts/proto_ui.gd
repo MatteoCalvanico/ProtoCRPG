@@ -19,7 +19,7 @@ func _ready() -> void:
 	MessageBus.ap_remove.connect(ap_update)
 	MessageBus.ap_restore.connect(ap_reset)
 	
-	ap_reset(0)
+	ap_reset(9)
 
 # Player enter in ATTACK MODE
 func _on_attack_pressed() -> void:
@@ -32,7 +32,7 @@ func _on_attack_pressed() -> void:
 # Player exit from ATTACK MODE - Now is possible to move around - APs restored
 func _on_skip_pressed() -> void:
 	MessageBus.attack_mode_off.emit()
-	MessageBus.ap_restore.emit(0)
+	MessageBus.ap_restore.emit(9)
 	attack_button.disabled = false
 	skip_button.disabled = true
 	
@@ -48,6 +48,8 @@ func ap_update(count: int):
 				break
 
 func ap_reset(count: int):
-	ap_count = 0
 	for AP in APs:
+		if count == 0:
+			break
+		count -= 1
 		AP.set_color(AP_FILL)
