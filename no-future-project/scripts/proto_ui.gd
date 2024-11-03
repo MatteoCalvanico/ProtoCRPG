@@ -18,6 +18,8 @@ const AP_FILL = Color(0, 0, 255,1)
 func _ready() -> void:
 	MessageBus.ap_remove.connect(ap_update)
 	MessageBus.ap_restore.connect(ap_reset)
+	
+	ap_reset(0)
 
 # Player enter in ATTACK MODE
 func _on_attack_pressed() -> void:
@@ -39,11 +41,8 @@ func _on_skip_pressed() -> void:
 ## MessageBus related function
 func ap_update(count: int):
 	ap_count += 1
-	print(ap_count)
 	if ap_count % 32 == 0:
-		print("Enter IF")
 		for AP in APs:
-			print(AP)
 			if AP.get_color() == AP_FILL:
 				AP.set_color(AP_EMPTY)
 				break
