@@ -13,6 +13,8 @@ var used_ap = 0
 @onready var navigator = $NavigationAgent2D
 @onready var camera = $Camera2D
 
+@onready var layer0 = $"../Layer0"
+
 
 func _ready() -> void:
 	MessageBus.attack_mode_on.connect(update)
@@ -31,6 +33,12 @@ func _physics_process(delta: float) -> void:
 			# Only update the target location if navigator is finiashed OR player wants to change location
 			if !isMoving || Input.is_action_just_pressed("mouseSX"):
 				target = self.get_global_mouse_position()
+				
+				# This use Layout0 coords, but when is use it in move doesn't take the right cell
+				# This logic can be used to highlight the cell clicked by the user
+				print(layer0.local_to_map(layer0.get_local_mouse_position()))
+				layer0.set_cell(layer0.local_to_map(layer0.get_local_mouse_position()), 0, Vector2i(0,0))
+				
 				isMoving = true
 				
 			if target != null:
@@ -48,9 +56,10 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	self.velocity = safe_velocity
 
 # Move the player to the target position
-## NEED FIX - Sometimes player get stuck and ap continue to decrese (because the position clicked is ouside the map and is not reachable)
+## NEED FIX - Sometimes player get stuck or the position clicked is ouside the map and is not reachable, ap continue to decrese
 func move(target_position: Vector2):
 	navigator.target_position = target_position
+	print("Nav target", navigator.target_position)
 	
 	# NavigationAgent has reached the target location
 	if navigator.is_navigation_finished():
