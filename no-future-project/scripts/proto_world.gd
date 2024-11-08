@@ -48,6 +48,7 @@ func place_boundaries():
 				layer0.set_cell(current_spot, 0, boundery)
 
 # Needed to stop the scene when the player enter in attack mode
+## To work you need the root node with Process->Mode:Inherit - If you want to make an exception put Process->Mode:Always on all nodes you don't want to be paused 
 func toggle_pause():
 	get_tree().paused = !get_tree().paused
 
