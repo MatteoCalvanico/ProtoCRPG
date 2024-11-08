@@ -1,6 +1,4 @@
 # ProtoCRPG
-#
-## Info
 [![Status - WORK IN PROGRESS](https://img.shields.io/badge/Status-WORK_IN_PROGRESS-FFA500)](https://)
 ![Made with Godot 4.3](https://img.shields.io/badge/Made%20with-Godot%204.3-478cbf?logo=godot-engine)
 [![License](https://img.shields.io/badge/License-MIT-blue)](#license "Go to license section")
@@ -43,3 +41,13 @@ ProtoCRPG has the following features:
 <p align = "center">
     <img src="./src/dirTree.png"/>
 </p> 
+
+## Controls
+
+| Actions                | Keyboard and Mouse |
+| ---------------------- | ------------------ |
+| Moving                 | Left mouse click   |
+| Moving [DEBUG]         | "WASD"             |
+| Interaction            | Right mouse click  |
+| Attack (on attack mode)| Left mouse click   |
+| Pause                  | "ESC"              |
