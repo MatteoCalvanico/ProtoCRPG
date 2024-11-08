@@ -1,16 +1,15 @@
-#
 # Godot Project: ProtoCRPG
 #
 ## Info
-- Status: WORK IN PROGRESS
-- Godot version: 4.3
-- Type of game: 2D (isometric)
+- **Status**: *WORK IN PROGRESS*
+- **Godot** *version: 4.3*
+- **Type of game**: *2D (isometric)*
 #
 #
 ## Context
 ProtoCRPG is a template for building your own CRPG.
 
-Use the latest Godot Engine components, like, to create a great starting point for an old-school isometric RPG.
+Use the latest Godot Engine components, to create a great starting point for an old-school isometric RPG.
 #
 #
 ## Features
