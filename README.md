@@ -1,9 +1,9 @@
-# Godot Project: ProtoCRPG
+# ProtoCRPG
 #
 ## Info
-- **Status**: *WORK IN PROGRESS*
-- **Godot** *version: 4.3*
-- **Type of game**: *2D (isometric)*
+[![Status - WORK IN PROGRESS](https://img.shields.io/badge/Status-WORK_IN_PROGRESS-FFA500)](https://)
+![Made with Godot 4.3](https://img.shields.io/badge/Made%20with-Godot%204.3-478cbf?logo=godot-engine)
+[![License](https://img.shields.io/badge/License-MIT-blue)](#license "Go to license section")
 #
 #
 ## Context
