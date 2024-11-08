@@ -32,14 +32,15 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("mouseSX") || isMoving: 
 			# Only update the target location if navigator is finiashed OR player wants to change location
 			if !isMoving || Input.is_action_just_pressed("mouseSX"):
-				target = self.get_global_mouse_position()
+				# Move to position only if in the navigation area (no boundaries)
+				if layer0.local_to_map(layer0.get_local_mouse_position()) in layer0.get_used_cells() and not layer0.get_cell_atlas_coords(layer0.local_to_map(layer0.get_local_mouse_position())) == Vector2i(0,1):
+					target = self.get_global_mouse_position()
+					isMoving = true
 				
 				# This use Layout0 coords, but when is use it in move doesn't take the right cell
 				# This logic can be used to highlight the cell clicked by the user
-				print(layer0.local_to_map(layer0.get_local_mouse_position()))
-				layer0.set_cell(layer0.local_to_map(layer0.get_local_mouse_position()), 0, Vector2i(0,0))
-				
-				isMoving = true
+				#print(layer0.local_to_map(layer0.get_local_mouse_position()))
+				#layer0.set_cell(layer0.local_to_map(layer0.get_local_mouse_position()), 0, Vector2i(0,0))
 				
 			if target != null:
 				move(target)
@@ -59,7 +60,6 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 ## NEED FIX - Sometimes player get stuck or the position clicked is ouside the map and is not reachable, ap continue to decrese
 func move(target_position: Vector2):
 	navigator.target_position = target_position
-	print("Nav target", navigator.target_position)
 	
 	# NavigationAgent has reached the target location
 	if navigator.is_navigation_finished():
