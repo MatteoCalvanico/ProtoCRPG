@@ -57,7 +57,7 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	self.velocity = safe_velocity
 
 # Move the player to the target position
-## NEED FIX - Sometimes player get stuck or the position clicked is ouside the map and is not reachable, ap continue to decrese
+## NEED FIX - Sometimes player get stuck and ap continue to decrese
 func move(target_position: Vector2):
 	navigator.target_position = target_position
 	

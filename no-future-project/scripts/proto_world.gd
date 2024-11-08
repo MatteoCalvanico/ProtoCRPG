@@ -26,6 +26,9 @@ const boundery = Vector2i(0,1)
 
 
 func _ready() -> void:
+	MessageBus.attack_mode_on.connect(update)
+	MessageBus.attack_mode_off.connect(reset)
+	
 	place_boundaries()
 
 func _process(delta: float) -> void:
@@ -43,3 +46,15 @@ func place_boundaries():
 			# Empty spot (method return -1 if cell do not exist)
 			if layer0.get_cell_source_id(current_spot) == -1:
 				layer0.set_cell(current_spot, 0, boundery)
+
+# Needed to stop the scene when the player enter in attack mode
+func toggle_pause():
+	get_tree().paused = !get_tree().paused
+
+
+## MessageBus related function
+func update():
+	toggle_pause()
+
+func reset():
+	toggle_pause()

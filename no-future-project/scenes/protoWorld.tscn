@@ -29,6 +29,7 @@ tile_map_data = PackedByteArray("AAD//wAAAAADAAAAAAD//wEAAAADAAAAAAD+/wEAAAADAAA
 tile_set = ExtResource("2_1lmqu")
 
 [node name="Player" parent="." instance=ExtResource("3_l26xo")]
+process_mode = 3
 position = Vector2(511, 235)
 
 [node name="NPCs" type="Node2D" parent="."]
@@ -61,3 +62,4 @@ position = Vector2(348, 517)
 target = NodePath("../../Player")
 
 [node name="GUI" parent="." instance=ExtResource("7_lqdrp")]
+process_mode = 3
