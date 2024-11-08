@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://k7ye0le3kd1u" path="res://tileset/protoEnemy.png" id="1_us2rf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a0ikj"]
-radius = 7.0
-height = 18.0
+radius = 8.0
+height = 24.0
 
 [node name="protoEnemy" type="CharacterBody2D"]
 z_index = 1
@@ -17,12 +17,13 @@ script = ExtResource("1_lwn06")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
-position = Vector2(-14, -69)
+position = Vector2(-1, 0)
 scale = Vector2(1.69508, 1.45238)
 texture = ExtResource("1_us2rf")
+offset = Vector2(-7, -29)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -7)
+position = Vector2(1, 14)
 shape = SubResource("CapsuleShape2D_a0ikj")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

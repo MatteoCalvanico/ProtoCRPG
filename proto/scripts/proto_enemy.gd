@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 
 const SPEED = 100
-const STOP_DISTANCE = 100.0 # This is gonna change with the enemy type [Long, mid or short range]
 
 @onready var navigator = $NavigationAgent2D
 @export var target: CharacterBody2D = null 
+
+# This is gonna change with the enemy type [Long, mid or short range]
+@export var stop_distance = 100
 
 func _physics_process(delta: float) -> void:
 	
@@ -17,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	var distance_to_target = self.global_position.distance_to(target.global_position)
 	
 	# NavigationAgent has reached the target location
-	if navigator.is_navigation_finished() || distance_to_target <= STOP_DISTANCE:
+	if navigator.is_navigation_finished() || distance_to_target <= stop_distance:
 		navigator.target_position = self.global_position
 		return
 	
