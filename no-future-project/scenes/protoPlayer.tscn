@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://scripts/proto_player.gd" id="1_qqe3f"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uni4x"]
-radius = 4.5
-height = 9.0
+radius = 5.5
+height = 11.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -21,7 +21,7 @@ position = Vector2(1, -21)
 texture = ExtResource("1_6n8n7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 2)
+position = Vector2(0.5, -1.5)
 shape = SubResource("CapsuleShape2D_uni4x")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

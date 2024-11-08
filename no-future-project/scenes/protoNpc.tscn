@@ -15,6 +15,7 @@ outline_size = 5
 outline_color = Color(0.00184107, 0.00184107, 0.00184107, 1)
 
 [node name="ProtoNPC" type="CharacterBody2D"]
+y_sort_enabled = true
 collision_mask = 3
 script = ExtResource("1_581wd")
 
@@ -33,6 +34,7 @@ position = Vector2(-5, -0.5)
 shape = SubResource("RectangleShape2D_nab5m")
 
 [node name="TextLabel" type="Label" parent="."]
+y_sort_enabled = true
 offset_left = -93.0
 offset_top = -96.0
 offset_right = 85.0
