@@ -34,11 +34,13 @@ position = Vector2(-5, -0.5)
 shape = SubResource("RectangleShape2D_nab5m")
 
 [node name="TextLabel" type="Label" parent="."]
+z_index = 1
 y_sort_enabled = true
 offset_left = -93.0
 offset_top = -96.0
-offset_right = 85.0
+offset_right = 87.0
 offset_bottom = -73.0
+pivot_offset = Vector2(90, 11.5)
 label_settings = SubResource("LabelSettings_5xtf0")
 horizontal_alignment = 1
 vertical_alignment = 1
