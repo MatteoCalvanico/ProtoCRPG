@@ -5,26 +5,26 @@
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource("1_wsisb")
 
+[node name="BackgroundColor" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(0, 95)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -95.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
 [node name="Control" type="Control" parent="."]
 y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 978.0
+offset_top = 986.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="BackgroundColor" type="ColorRect" parent="Control"]
-custom_minimum_size = Vector2(0, 95)
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-color = Color(0, 0, 0, 1)
 
 [node name="APContainer" type="GridContainer" parent="Control"]
 z_index = 1
@@ -121,8 +121,6 @@ layout_mode = 2
 disabled = true
 text = "Skip"
 
-[connection signal="mouse_entered" from="Control" to="." method="_on_control_mouse_entered"]
-[connection signal="mouse_exited" from="Control" to="." method="_on_control_mouse_exited"]
 [connection signal="mouse_entered" from="Control/CombatContainer/CombatButtons/Attack" to="." method="_on_attack_mouse_entered"]
 [connection signal="mouse_exited" from="Control/CombatContainer/CombatButtons/Attack" to="." method="_on_attack_mouse_exited"]
 [connection signal="pressed" from="Control/CombatContainer/CombatButtons/Attack" to="." method="_on_attack_pressed"]
