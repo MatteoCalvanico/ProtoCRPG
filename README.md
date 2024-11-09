@@ -30,6 +30,11 @@ ProtoCRPG has the following features:
     <img src="./src/npcPreview.gif"/>
 </p> 
 
+- Log to read/write the results of individual actions:
+<p align = "center">
+    <img src="./src/logPreview.gif"/>
+</p> 
+
 - Attack of enemies, with different distances [To finish]:
 <p align = "center">
     <img src="./src/enemyMovement.gif"/>
