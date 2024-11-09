@@ -9,8 +9,19 @@
     <a href="https://godotengine.org/download/archive/4.3-stable/">
       <img alt="Engine Used" src="https://img.shields.io/badge/Made%20with-Godot%204.3-478cbf?logo=godot-engine" />
     </a>
+    <a href="https://github.com/MatteoCalvanico/ProtoCRPG/releases/">
+      <img alt="Release" src="https://img.shields.io/github/release/MatteoCalvanico/ProtoCRPG?include_prereleases=&sort=semver&color=blue" />
+    </a>
     <a href="https://github.com/MatteoCalvanico/ProtoCRPG/blob/prototype/LICENSE">
       <img alt="License" src="https://img.shields.io/badge/License-MIT-blue" />
+    </a>
+    <a href="https://github.com/MatteoCalvanico/ProtoCRPG/issues">
+      <img alt="Issues" src="https://img.shields.io/github/issues/MatteoCalvanico/ProtoCRPG" />
+    </a>
+</p>
+<p align="center">
+    <a href="https://github.com/MatteoCalvanico/ProtoCRPG/generate">
+        <img alt="Template" src="https://img.shields.io/badge/Generate-Use_this_template-2ea44f?style=for-the-badge" />
     </a>
     <br />
     <br />
@@ -22,8 +33,7 @@
 
 
 ## Context
-ProtoCRPG is a template for building your own CRPG.
-Use the latest Godot Engine components, to create a great starting point for an old-school isometric RPG.
+This template uses the latest Godot Engine components to create a great starting point for creating your own old school isometric RPG.
 
 ## Features
 ProtoCRPG has the following features:
