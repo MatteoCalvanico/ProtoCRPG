@@ -1,5 +1,9 @@
 extends Control
 
+
+# Display for info
+@onready var display = $InfoDisplay
+
 # Action Points
 @onready var APs = $APContainer.get_children()
 
@@ -16,6 +20,8 @@ func _ready() -> void:
 	MessageBus.ap_remove.connect(ap_update)
 	MessageBus.ap_restore.connect(ap_reset)
 	
+	MessageBus.log.connect(write)
+	
 	ap_reset(9)
 
 # Player enter in ATTACK MODE
@@ -24,7 +30,7 @@ func _on_attack_pressed() -> void:
 	attack_button.disabled = true
 	skip_button.disabled = false
 	
-	print("Attack !!!")
+	MessageBus.log.emit("Attack !!!")
 
 # Player exit from ATTACK MODE - Now is possible to move around - APs restored
 func _on_skip_pressed() -> void:
@@ -33,7 +39,7 @@ func _on_skip_pressed() -> void:
 	attack_button.disabled = false
 	skip_button.disabled = true
 	
-	print("Round skipped...")
+	MessageBus.log.emit("Round skipped...")
 
 ## MessageBus related function
 func ap_update(count: int):
@@ -50,3 +56,6 @@ func ap_reset(count: int):
 			break
 		count -= 1
 		AP.set_color(AP_FILL)
+
+func write(log: String):
+	display.text = log

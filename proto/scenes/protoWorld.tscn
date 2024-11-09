@@ -44,7 +44,7 @@ player = NodePath("../../Player")
 z_index = 1
 position = Vector2(675, 682)
 script = ExtResource("5_2jip4")
-interaction_distance = 80.0
+interaction_distance = 100.0
 player = NodePath("../../Player")
 
 [node name="Enemies" type="Node2D" parent="."]

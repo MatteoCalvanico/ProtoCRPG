@@ -85,6 +85,9 @@ func _unhandled_input(event: InputEvent) -> void:
 					target = self.get_global_mouse_position()
 					isMoving = true
 					
+					var log = "Moving to: " + str(layer0.local_to_map(layer0.get_local_mouse_position()))
+					MessageBus.log.emit(log)
+					
 				## This use Layout0 coords, but when is use it in move doesn't take the right cell
 				## This logic can be used to highlight the cell clicked by the user
 				##print(layer0.local_to_map(layer0.get_local_mouse_position()))

@@ -8,3 +8,7 @@ signal attack_mode_off
 # Player do something in ATTACK MODE - Use it to remove/restore AP point
 signal ap_remove(count: int)
 signal ap_restore(count: int)
+
+
+# Logs for InfoDisplay
+signal log(text: String)

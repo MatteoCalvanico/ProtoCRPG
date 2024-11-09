@@ -5,7 +5,7 @@ var response = ["Hi, I'm another ProtoNPC", "Welcome to the ProtoWorld", "Hi"]
 # Overriden function from base class
 func _interact():
 	text_timer.stop() # Stop previus waiting time
-	print("NPC clicked")
+	MessageBus.log.emit("NPC 2 clicked")
 	
 	# Pick a random response
 	text_label.text = response.pick_random()
