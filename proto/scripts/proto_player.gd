@@ -71,6 +71,7 @@ func move(target_position: Vector2):
 	
 		move_and_slide()
 	else: 
+		MessageBus.log.emit("APs are finished")
 		target = self.global_position
 
 # Prevents clicks from passing through the GUI - If the player clicks in the GUI area we don't move  
