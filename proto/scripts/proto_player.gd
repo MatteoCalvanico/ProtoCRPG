@@ -27,23 +27,10 @@ func _physics_process(delta: float) -> void:
 		camera.zoom *= 1.1
 	elif  Input.is_action_just_pressed("scrollDown") && camera.zoom >= Vector2(0.5,0.5):
 		camera.zoom *= 0.9
-	 
-	#Move with Mouse [One click]
-	if Input.is_action_just_pressed("mouseSX") || isMoving: 
-			# Only update the target location if navigator is finiashed OR player wants to change location
-			if !isMoving || Input.is_action_just_pressed("mouseSX"):
-				# Move to position only if in the navigation area (no boundaries)
-				if layer0.local_to_map(layer0.get_local_mouse_position()) in layer0.get_used_cells() and not layer0.get_cell_atlas_coords(layer0.local_to_map(layer0.get_local_mouse_position())) == Vector2i(0,1):
-					target = self.get_global_mouse_position()
-					isMoving = true
-				
-				# This use Layout0 coords, but when is use it in move doesn't take the right cell
-				# This logic can be used to highlight the cell clicked by the user
-				#print(layer0.local_to_map(layer0.get_local_mouse_position()))
-				#layer0.set_cell(layer0.local_to_map(layer0.get_local_mouse_position()), 0, Vector2i(0,0))
-				
-			if target != null:
-				move(target)
+		
+	# Player movement
+	if isMoving && target != null:
+		move(target)
 	elif OS.is_debug_build():
 			# Move with WASD and Arrows [ONLY DEBUG MODE]
 			var direction = Input.get_vector("left", "right", "down", "up")
@@ -86,16 +73,31 @@ func move(target_position: Vector2):
 	else: 
 		target = self.global_position
 
-
+# Prevents clicks from passing through the GUI - If the player clicks in the GUI area we don't move  
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		#Move with Mouse [One click]
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			# Only update the target location if navigator is finiashed OR player wants to change location
+			if !isMoving || event.button_index == MOUSE_BUTTON_LEFT:
+				# Move to position only if in navigation area (no boundaries)
+				if layer0.local_to_map(layer0.get_local_mouse_position()) in layer0.get_used_cells() and not layer0.get_cell_atlas_coords(layer0.local_to_map(layer0.get_local_mouse_position())) == Vector2i(0,1):
+					target = self.get_global_mouse_position()
+					isMoving = true
+					
+				## This use Layout0 coords, but when is use it in move doesn't take the right cell
+				## This logic can be used to highlight the cell clicked by the user
+				##print(layer0.local_to_map(layer0.get_local_mouse_position()))
+				##layer0.set_cell(layer0.local_to_map(layer0.get_local_mouse_position()), 0, Vector2i(0,0))
 
 
 ## MessageBus related function
 func update():
 	used_ap = 0
 	attack_mode = true
-	target = self.global_position # Remove the unwanted click under the attack button
+	target = self.global_position # Remove previus target
 
 func reset():
 	used_ap = 0
 	attack_mode = false
-	target = self.global_position # Remove the unwanted click under the attack button
+	target = self.global_position # Remove previus target

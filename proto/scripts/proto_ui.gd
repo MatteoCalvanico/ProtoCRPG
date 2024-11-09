@@ -1,14 +1,11 @@
-extends CanvasLayer
-
-# Control Pane
-@onready var control = $Control
+extends Control
 
 # Action Points
-@onready var APs = $Control/APContainer.get_children()
+@onready var APs = $APContainer.get_children()
 
 # Combat Buttons
-@onready var attack_button = $Control/CombatContainer/CombatButtons/Attack
-@onready var skip_button = $Control/CombatContainer/CombatButtons/Skip
+@onready var attack_button = $CombatContainer/CombatButtons/Attack
+@onready var skip_button = $CombatContainer/CombatButtons/Skip
 
 var ap_count = 0
 const AP_EMPTY = Color(50, 50, 50, 1)

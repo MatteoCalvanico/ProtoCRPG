@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://da1ilx28t303s"]
 
-[ext_resource type="Script" path="res://scripts/proto_ui.gd" id="1_wsisb"]
+[ext_resource type="Script" path="res://scripts/proto_ui.gd" id="2_mqwy2"]
 
 [node name="GUI" type="CanvasLayer"]
-script = ExtResource("1_wsisb")
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(0, 95)
@@ -25,6 +24,7 @@ anchor_bottom = 1.0
 offset_top = 986.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_mqwy2")
 
 [node name="APContainer" type="GridContainer" parent="Control"]
 z_index = 1
@@ -102,6 +102,7 @@ offset_right = -13.0
 offset_bottom = -7.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 0
 
 [node name="CombatButtons" type="VBoxContainer" parent="Control/CombatContainer"]
 layout_direction = 3
@@ -121,7 +122,5 @@ layout_mode = 2
 disabled = true
 text = "Skip"
 
-[connection signal="mouse_entered" from="Control/CombatContainer/CombatButtons/Attack" to="." method="_on_attack_mouse_entered"]
-[connection signal="mouse_exited" from="Control/CombatContainer/CombatButtons/Attack" to="." method="_on_attack_mouse_exited"]
-[connection signal="pressed" from="Control/CombatContainer/CombatButtons/Attack" to="." method="_on_attack_pressed"]
-[connection signal="pressed" from="Control/CombatContainer/CombatButtons/Skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="Control/CombatContainer/CombatButtons/Attack" to="Control" method="_on_attack_pressed"]
+[connection signal="pressed" from="Control/CombatContainer/CombatButtons/Skip" to="Control" method="_on_skip_pressed"]
