@@ -47,7 +47,7 @@ ProtoCRPG has the following features:
     <img src="./src/movementPreview.gif"/>
 </p> 
 
-- Turn-based combat and movement with *action points* [To finish]:
+- Turn-based combat, heal and movement with *action points* [To finish]:
 <p align = "center">
     <img src="todo"/>
 </p> 
@@ -80,4 +80,5 @@ ProtoCRPG has the following features:
 | Moving [DEBUG]         | "WASD"             |
 | Interaction            | Right mouse click  |
 | Attack (on attack mode)| Left mouse click   |
+| Heal                   | "Q"                |
 | Zoom                   | Mouse scroll       |
