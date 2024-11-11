@@ -4,6 +4,7 @@ extends CharacterBody2D
 # All this thing will be placed in a Singleton class or database
 const SPEED = 200
 const AP = 9 * 32 # 32 is the tile size
+var _health = 50.0
 
 var _isMoving: bool = false # Needed to make possible the movement with only one click
 var _attack_mode = false
@@ -19,6 +20,8 @@ var _used_ap = 0
 func _ready() -> void:
 	MessageBus.attack_mode_on.connect(_update)
 	MessageBus.attack_mode_off.connect(_reset)
+	
+	MessageBus.health_change.connect(_change_health)
 
 func _physics_process(delta: float) -> void:
 	# Player movement
@@ -32,6 +35,10 @@ func _physics_process(delta: float) -> void:
 			else :
 				self.velocity = Vector2.ZERO
 			move_and_slide()
+	
+	# Player heal
+	if Input.is_action_just_pressed("heal"):
+		MessageBus.health_change.emit(100)
 
 
 # Prevents clicks from passing through the GUI - If the player clicks in the GUI area we don't move  
@@ -116,3 +123,7 @@ func _reset():
 	_used_ap = 0
 	_attack_mode = false
 	_target = self.global_position # Remove previus target
+
+# Change the player health
+func _change_health(value: float):
+	_health = value

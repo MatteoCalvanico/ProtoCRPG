@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://da1ilx28t303s"]
+[gd_scene load_steps=4 format=3 uid="uid://da1ilx28t303s"]
 
 [ext_resource type="Script" path="res://scripts/proto_ui.gd" id="2_mqwy2"]
 
@@ -9,6 +9,9 @@ border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0.0588235, 0.0588235, 0.0588235, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hj4uu"]
+bg_color = Color(0.305882, 0, 0, 1)
 
 [node name="GUI" type="CanvasLayer"]
 
@@ -48,6 +51,24 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_188ub")
 scroll_following = true
 shortcut_keys_enabled = false
 
+[node name="HealthBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -152.0
+offset_top = -83.0
+offset_right = 152.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_hj4uu")
+value = 50.0
+rounded = true
+metadata/_edit_use_anchors_ = true
+
 [node name="APContainer" type="GridContainer" parent="Control"]
 z_index = 1
 layout_mode = 1
@@ -57,9 +78,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -151.0
-offset_top = -59.0
+offset_top = -45.0
 offset_right = 151.0
-offset_bottom = -28.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
 columns = 9

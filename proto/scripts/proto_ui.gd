@@ -4,6 +4,9 @@ extends Control
 # Display for info
 @onready var _display = $InfoDisplay
 
+# Health bar
+@onready var _health = $HealthBar
+
 # Action Points
 @onready var _APs = $APContainer.get_children()
 
@@ -19,6 +22,8 @@ const AP_FILL = Color(0, 0, 255,1)
 func _ready() -> void:
 	MessageBus.ap_remove.connect(_ap_update)
 	MessageBus.ap_restore.connect(_ap_reset)
+	
+	MessageBus.health_change.connect(_updated_health)
 	
 	MessageBus.log.connect(_write)
 	
@@ -59,6 +64,11 @@ func _ap_reset(count: int):
 			break
 		count -= 1
 		AP.set_color(AP_FILL)
+
+func _updated_health(value: float):
+	_health.value = value
+	var log = "Set health to: " + str(value)
+	MessageBus.log.emit(log)
 
 func _write(log: String):
 	_display.text = _display.text + "\n - " + log

@@ -9,6 +9,8 @@ signal attack_mode_off
 signal ap_remove(count: int)
 signal ap_restore(count: int)
 
+# Player health change
+signal health_change(value: float)
 
 # Logs for InfoDisplay
 signal log(text: String)
