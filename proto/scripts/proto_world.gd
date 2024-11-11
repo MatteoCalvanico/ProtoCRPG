@@ -26,16 +26,16 @@ const boundery = Vector2i(0,1)
 
 
 func _ready() -> void:
-	MessageBus.attack_mode_on.connect(update)
-	MessageBus.attack_mode_off.connect(reset)
+	MessageBus.attack_mode_on.connect(_update)
+	MessageBus.attack_mode_off.connect(_reset)
 	
-	place_boundaries()
+	_place_boundaries()
 
 func _process(delta: float) -> void:
 	pass
 
 # Needed for create the world boundaries
-func place_boundaries():
+func _place_boundaries():
 	var offsets = [ Vector2i(0,-1), Vector2i(0,1), Vector2i(-1,0), Vector2i(1,0)]
 	var usedCells = layer0.get_used_cells()
 	
@@ -54,8 +54,8 @@ func toggle_pause():
 
 
 ## MessageBus related function
-func update():
+func _update():
 	toggle_pause()
 
-func reset():
+func _reset():
 	toggle_pause()

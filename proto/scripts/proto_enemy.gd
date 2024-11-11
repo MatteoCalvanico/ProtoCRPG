@@ -12,7 +12,7 @@ const SPEED = 100
 func _physics_process(delta: float) -> void:
 	
 	# Update target position
-	update_position()
+	_update_position()
 	
 	# Need to stop the enemy before it reach the target
 	# Can be upgraded with a raycaster using RayCast2D
@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 
 
 # Update the navigation target
-func update_position():
+func _update_position():
 	await get_tree().physics_frame # Need to wait everything is loaded
 	if target:
 		navigator.target_position = target.global_position

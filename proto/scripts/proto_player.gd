@@ -17,8 +17,8 @@ var used_ap = 0
 
 
 func _ready() -> void:
-	MessageBus.attack_mode_on.connect(update)
-	MessageBus.attack_mode_off.connect(reset)
+	MessageBus.attack_mode_on.connect(_update)
+	MessageBus.attack_mode_off.connect(_reset)
 
 func _physics_process(delta: float) -> void:
 	# Player movement
@@ -107,12 +107,12 @@ func _is_mouse_position_valid():
 		return false
 
 ## MessageBus related function
-func update():
+func _update():
 	used_ap = 0
 	attack_mode = true
 	target = self.global_position # Remove previus target
 
-func reset():
+func _reset():
 	used_ap = 0
 	attack_mode = false
 	target = self.global_position # Remove previus target

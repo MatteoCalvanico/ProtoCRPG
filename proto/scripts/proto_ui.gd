@@ -17,12 +17,12 @@ const AP_FILL = Color(0, 0, 255,1)
 
 
 func _ready() -> void:
-	MessageBus.ap_remove.connect(ap_update)
-	MessageBus.ap_restore.connect(ap_reset)
+	MessageBus.ap_remove.connect(_ap_update)
+	MessageBus.ap_restore.connect(_ap_reset)
 	
-	MessageBus.log.connect(write)
+	MessageBus.log.connect(_write)
 	
-	ap_reset(9)
+	_ap_reset(9)
 	
 	display.mouse_filter = MOUSE_FILTER_IGNORE # Block scroll with mouse wheel 
 
@@ -45,7 +45,7 @@ func _on_skip_pressed() -> void:
 	MessageBus.log.emit("Coming out of attack mode...") # This will be written if you press Skip and there are no other enemies to attack
 
 ## MessageBus related function
-func ap_update(count: int):
+func _ap_update(count: int):
 	ap_count += 1
 	if ap_count % 32 == 0:
 		for AP in APs:
@@ -53,12 +53,12 @@ func ap_update(count: int):
 				AP.set_color(AP_EMPTY)
 				break
 
-func ap_reset(count: int):
+func _ap_reset(count: int):
 	for AP in APs:
 		if count == 0:
 			break
 		count -= 1
 		AP.set_color(AP_FILL)
 
-func write(log: String):
+func _write(log: String):
 	display.text = display.text + "\n - " + log
