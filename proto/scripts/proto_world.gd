@@ -1,9 +1,9 @@
 extends Node2D
 
 # Our layers
-@onready var layer0 = $Layer0
-@onready var layer1 = $Layer1
-enum layers {layer0, layer1}
+@onready var _layer0 = $Layer0
+@onready var _layer1 = $Layer1
+enum layers {_layer0, _layer1}
 
 # NPCs
 @onready var npcs = $NPCs.get_children()
@@ -37,15 +37,15 @@ func _process(delta: float) -> void:
 # Needed for create the world boundaries
 func _place_boundaries():
 	var offsets = [ Vector2i(0,-1), Vector2i(0,1), Vector2i(-1,0), Vector2i(1,0)]
-	var usedCells = layer0.get_used_cells()
+	var usedCells = _layer0.get_used_cells()
 	
 	for cell in usedCells:
 		for offeset in offsets:
 			var current_spot = cell + offeset
 			
 			# Empty spot (method return -1 if cell do not exist)
-			if layer0.get_cell_source_id(current_spot) == -1:
-				layer0.set_cell(current_spot, 0, boundery)
+			if _layer0.get_cell_source_id(current_spot) == -1:
+				_layer0.set_cell(current_spot, 0, boundery)
 
 # Needed to stop the scene when the player enter in attack mode
 ## To work you need the root node with Process->Mode:Inherit - If you want to make an exception put Process->Mode:Always on all nodes you don't want to be paused 

@@ -51,19 +51,17 @@ player = NodePath("../../Player")
 y_sort_enabled = true
 position = Vector2(1158, -436)
 
-[node name="protoEnemy" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
+[node name="protoEnemy" parent="Enemies" node_paths=PackedStringArray("_target") instance=ExtResource("4_uc0up")]
 position = Vector2(243, 577)
-target = NodePath("../../Player")
-stop_distance = 200
+_target = NodePath("../../Player")
 
-[node name="protoEnemy2" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
+[node name="protoEnemy2" parent="Enemies" node_paths=PackedStringArray("_target") instance=ExtResource("4_uc0up")]
 position = Vector2(294, 549)
-target = NodePath("../../Player")
-stop_distance = 150
+_target = NodePath("../../Player")
 
-[node name="protoEnemy3" parent="Enemies" node_paths=PackedStringArray("target") instance=ExtResource("4_uc0up")]
+[node name="protoEnemy3" parent="Enemies" node_paths=PackedStringArray("_target") instance=ExtResource("4_uc0up")]
 position = Vector2(348, 517)
-target = NodePath("../../Player")
+_target = NodePath("../../Player")
 
 [node name="GUI" parent="." instance=ExtResource("7_lqdrp")]
 process_mode = 3

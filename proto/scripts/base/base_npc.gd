@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@onready var click_area = $ClickArea
-@onready var text_label = $TextLabel
-@onready var text_timer = $TextTimer
+@onready var _click_area = $ClickArea
+@onready var _text_label = $TextLabel
+@onready var _text_timer = $TextTimer
 
 # MAX distance from the NPC to be able to interact with it
 @export var interaction_distance = 70.0 
@@ -13,9 +13,9 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	# Set the "observer" - When the player click th NPC we do something
-	click_area.connect("input_event", _npc_clicked)
+	_click_area.connect("input_event", _npc_clicked)
 
-# Called when the playr click on the click_area
+# Called when the playr click on the _click_area
 func _npc_clicked(viewport: Viewport, event: InputEvent, shape_idx: int):
 	if event.is_action_pressed("mouseDx"):
 		var distance = global_position.distance_to(player.global_position) if player else 999.0
@@ -30,4 +30,4 @@ func _interact():
 
 # Hide text after timer expires
 func _on_text_timer_timeout() -> void:
-	text_label.text = ""
+	_text_label.text = ""
