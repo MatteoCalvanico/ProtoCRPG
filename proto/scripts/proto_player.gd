@@ -21,13 +21,6 @@ func _ready() -> void:
 	MessageBus.attack_mode_off.connect(reset)
 
 func _physics_process(delta: float) -> void:
-	
-	# Camera Zoom
-	if Input.is_action_just_pressed("scrollUp") && camera.zoom <= Vector2(2,2):
-		camera.zoom *= 1.1
-	elif  Input.is_action_just_pressed("scrollDown") && camera.zoom >= Vector2(0.5,0.5):
-		camera.zoom *= 0.9
-		
 	# Player movement
 	if isMoving && target != null:
 		move(target)
@@ -93,6 +86,12 @@ func _unhandled_input(event: InputEvent) -> void:
 				## This logic can be used to highlight the cell clicked by the user
 				##print(layer0.local_to_map(layer0.get_local_mouse_position()))
 				##layer0.set_cell(layer0.local_to_map(layer0.get_local_mouse_position()), 0, Vector2i(0,0))
+				
+		# Camera Zoom
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN && camera.zoom >= Vector2(0.5,0.5):
+			camera.zoom *= 0.9
+		elif event.button_index == MOUSE_BUTTON_WHEEL_UP && camera.zoom <= Vector2(2,2):
+			camera.zoom *= 1.1
 
 
 ## MessageBus related function

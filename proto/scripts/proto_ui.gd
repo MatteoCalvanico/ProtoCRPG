@@ -23,6 +23,8 @@ func _ready() -> void:
 	MessageBus.log.connect(write)
 	
 	ap_reset(9)
+	
+	display.mouse_filter = MOUSE_FILTER_IGNORE # Block scroll with mouse wheel 
 
 # Player enter in ATTACK MODE
 func _on_attack_pressed() -> void:
@@ -30,7 +32,7 @@ func _on_attack_pressed() -> void:
 	attack_button.disabled = true
 	skip_button.disabled = false
 	
-	MessageBus.log.emit("Attack !!!")
+	MessageBus.log.emit("Entering attack mode...")
 
 # Player exit from ATTACK MODE - Now is possible to move around - APs restored
 func _on_skip_pressed() -> void:
@@ -39,7 +41,8 @@ func _on_skip_pressed() -> void:
 	attack_button.disabled = false
 	skip_button.disabled = true
 	
-	MessageBus.log.emit("Round skipped...")
+	MessageBus.log.emit("Round skipped")
+	MessageBus.log.emit("Coming out of attack mode...") # This will be written if you press Skip and there are no other enemies to attack
 
 ## MessageBus related function
 func ap_update(count: int):
@@ -58,4 +61,4 @@ func ap_reset(count: int):
 		AP.set_color(AP_FILL)
 
 func write(log: String):
-	display.text = log
+	display.text = display.text + "\n - " + log
