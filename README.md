@@ -82,3 +82,11 @@ ProtoCRPG has the following features:
 | Attack (on attack mode)| Left mouse click   |
 | Heal                   | "Q"                |
 | Zoom                   | Mouse scroll       |
+
+### NEXT...
+- Complete the following functionality:
+  - Combat
+
+- Make the template available on:
+  - [Asset Library](https://godotengine.org/asset-library/asset)
+  - [Awesome Godot](https://github.com/godotengine/awesome-godot?tab=readme-ov-file)
