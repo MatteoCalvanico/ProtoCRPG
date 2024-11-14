@@ -84,6 +84,9 @@ ProtoCRPG has the following features:
 | Zoom                   | Mouse scroll       |
 
 ### NEXT...
+- Bug to fix:
+  - Player and enemy behavior, now they get stuck a lot;
+
 - Complete the following functionality:
   - Combat
 
