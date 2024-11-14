@@ -11,7 +11,7 @@ var _isMoving: bool = false # Needed to make possible the movement with only one
 var _attack_mode = false
 var _target = null
 var _used_ap = 0
-var nav_layer_value # Represents the value associated with the Navigation Layer, we take it from a cell that is sure to have it (purple_slab)
+var nav_layer_value # Represents the values associated with the Navigation Layer, we take it from a cells that have it
 var border_value = Vector2i(0,1) # Rapresents the border in the TileSet
 
 ## !!! Scenes nodes !!!
@@ -26,7 +26,8 @@ func _ready() -> void:
 	
 	MessageBus.health_change.connect(_change_health)
 	
-	nav_layer_value = _layer0.get_cell_tile_data(Vector2i(5,0)).get_navigation_polygon(0)
+	nav_layer_value = [_layer0.get_cell_tile_data(Vector2i(5,0)).get_navigation_polygon(0), _layer0.get_cell_tile_data(Vector2i(3,0)).get_navigation_polygon(0), _layer0.get_cell_tile_data(Vector2i(0,0)).get_navigation_polygon(0)]
+	print(nav_layer_value)
 
 func _physics_process(delta: float) -> void:
 	# Player movement
@@ -82,8 +83,8 @@ func _is_mouse_position_valid():
 	
 	# First check: mouse position in the map boundaries
 	if mouse_pos in _layer0.get_used_cells():
-		# Second check: cell on mouse position is navigable (have Navigation Layer)
-		if _layer0.get_cell_tile_data(mouse_pos).get_navigation_polygon(0) == nav_layer_value:
+		# Second check: cell on mouse position is navigable (have Navigation Layer) - NEED CHANGE: we need a better solution to check if a cell is in Navigation Layer 1 (0)
+		if _layer0.get_cell_tile_data(mouse_pos).get_navigation_polygon(0) in nav_layer_value:
 			# Third check: mouse position isn't in the boundaries - Redundant, boundaries are not navigable
 			#if _layer0.get_cell_atlas_coords(mouse_pos) != border_value:
 				#return true
