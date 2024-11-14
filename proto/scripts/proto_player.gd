@@ -26,8 +26,8 @@ func _ready() -> void:
 	
 	MessageBus.health_change.connect(_change_health)
 	
-	nav_layer_value = [_layer0.get_cell_tile_data(Vector2i(5,0)).get_navigation_polygon(0), _layer0.get_cell_tile_data(Vector2i(3,0)).get_navigation_polygon(0), _layer0.get_cell_tile_data(Vector2i(0,0)).get_navigation_polygon(0)]
-	print(nav_layer_value)
+	# No needed in this implementation
+	#nav_layer_value = [_layer0.get_cell_tile_data(Vector2i(5,0)).get_navigation_polygon(0), _layer0.get_cell_tile_data(Vector2i(3,0)).get_navigation_polygon(0), _layer0.get_cell_tile_data(Vector2i(0,0)).get_navigation_polygon(0)]
 
 func _physics_process(delta: float) -> void:
 	# Player movement
@@ -83,11 +83,14 @@ func _is_mouse_position_valid():
 	
 	# First check: mouse position in the map boundaries
 	if mouse_pos in _layer0.get_used_cells():
-		# Second check: cell on mouse position is navigable (have Navigation Layer) - NEED CHANGE: we need a better solution to check if a cell is in Navigation Layer 1 (0)
-		if _layer0.get_cell_tile_data(mouse_pos).get_navigation_polygon(0) in nav_layer_value:
-			# Third check: mouse position isn't in the boundaries - Redundant, boundaries are not navigable
-			#if _layer0.get_cell_atlas_coords(mouse_pos) != border_value:
-				#return true
+		# Second check [Option 1]: cell on mouse position is navigable (check custom data layer)
+		if _layer0.get_cell_tile_data(mouse_pos).get_custom_data("is_navigable") == true:
+		# Second check [Option 2]: cell on mouse position is navigable (have Navigation Layer) - NEED CHANGE: we need a better solution to check if a cell is in Navigation Layer 1 (0)
+		#if _layer0.get_cell_tile_data(mouse_pos).get_navigation_polygon(0) in nav_layer_value:
+		
+			## Third check: mouse position isn't in the boundaries - Redundant, boundaries are not navigable
+			##if _layer0.get_cell_atlas_coords(mouse_pos) != border_value:
+				##return true
 			return true
 		else:
 			MessageBus.log.emit("I cannot reach that postion...there's something else on top")
