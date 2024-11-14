@@ -6,22 +6,27 @@ const SPEED = 200
 const AP = 9 * 32 # 32 is the tile size
 var _health = 50.0
 
+## !!! Utils !!!
 var _isMoving: bool = false # Needed to make possible the movement with only one click
 var _attack_mode = false
 var _target = null
 var _used_ap = 0
+var nav_layer_value # Represents the value associated with the Navigation Layer, we take it from a cell that is sure to have it (purple_slab)
+var border_value = Vector2i(0,1) # Rapresents the border in the TileSet
 
+## !!! Scenes nodes !!!
 @onready var _navigator = $NavigationAgent2D
 @onready var _camera = $Camera2D
 
 @onready var _layer0 = $"../Layer0"
-
 
 func _ready() -> void:
 	MessageBus.attack_mode_on.connect(_update)
 	MessageBus.attack_mode_off.connect(_reset)
 	
 	MessageBus.health_change.connect(_change_health)
+	
+	nav_layer_value = _layer0.get_cell_tile_data(Vector2i(5,0)).get_navigation_polygon(0)
 
 func _physics_process(delta: float) -> void:
 	# Player movement
@@ -71,6 +76,25 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	self.velocity = safe_velocity
 
+# Check if the mouse position is in navigation area (no boundaries)
+func _is_mouse_position_valid():
+	var mouse_pos = _layer0.local_to_map(_layer0.get_local_mouse_position())
+	
+	# First check: mouse position in the map boundaries
+	if mouse_pos in _layer0.get_used_cells():
+		# Second check: cell on mouse position is navigable (have Navigation Layer)
+		if _layer0.get_cell_tile_data(mouse_pos).get_navigation_polygon(0) == nav_layer_value:
+			# Third check: mouse position isn't in the boundaries - Redundant, boundaries are not navigable
+			#if _layer0.get_cell_atlas_coords(mouse_pos) != border_value:
+				#return true
+			return true
+		else:
+			MessageBus.log.emit("I cannot reach that postion...there's something else on top")
+			return false
+	else:
+		MessageBus.log.emit("I cannot reach that postion...")
+		return false
+
 # Move the player to the target position
 ## NEED FIX - Sometimes player get stuck and ap continue to decrese
 func _move(target_position: Vector2):
@@ -102,16 +126,6 @@ func _move(target_position: Vector2):
 		MessageBus.log.emit("APs are finished")
 		_target = self.global_position
 
-# Check if the mouse position is in navigation area (no boundaries)
-func _is_mouse_position_valid():
-	# First check: mouse position in the map boundaries
-	if _layer0.local_to_map(_layer0.get_local_mouse_position()) in _layer0.get_used_cells():
-		# Second check: mouse position isn't in the boundaries - Redundant, boundaries are not navigable
-		if _layer0.get_cell_atlas_coords(_layer0.local_to_map(_layer0.get_local_mouse_position())) != Vector2i(0,1):
-			return true
-	else:
-		MessageBus.log.emit("I cannot reach that postion...")
-		return false
 
 ## MessageBus related function
 func _update():
