@@ -22,7 +22,7 @@ func _npc_clicked(viewport: Viewport, event: InputEvent, shape_idx: int):
 		if distance <= interaction_distance:
 			_interact()
 		else:
-			MessageBus.log.emit("You're too far away")
+			MessageBus.log.emit("I'm too far away")
 
 # Virtual function to be overriden by child classes
 func _interact():
