@@ -47,6 +47,11 @@ func _place_boundaries():
 			if _layer0.get_cell_source_id(current_spot) == -1:
 				_layer0.set_cell(current_spot, 0, boundery)
 
+# Update Layer0 navigation layer under Layer1 blocks
+## Required to make the entities' navigationAgent2D avoid covered areas
+func _update_nav_layer():
+	pass # TODO
+
 # Needed to stop the scene when the player enter in attack mode
 ## To work you need the root node with Process->Mode:Inherit - If you want to make an exception put Process->Mode:Always on all nodes you don't want to be paused 
 func toggle_pause():
