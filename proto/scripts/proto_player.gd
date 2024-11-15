@@ -11,14 +11,15 @@ var _isMoving: bool = false # Needed to make possible the movement with only one
 var _attack_mode = false
 var _target = null
 var _used_ap = 0
-var nav_layer_value # Represents the values associated with the Navigation Layer, we take it from a cells that have it
-var border_value = Vector2i(0,1) # Rapresents the border in the TileSet
+#var nav_layer_value # Represents the values associated with the Navigation Layer, we take it from a cells that have it - # No needed in this implementation
+#var border_value = Vector2i(0,1) # Rapresents the border in the TileSet
 
 ## !!! Scenes nodes !!!
 @onready var _navigator = $NavigationAgent2D
 @onready var _camera = $Camera2D
 
 @onready var _layer0 = $"../Layer0"
+@onready var _layer1 = $"../Layer1"
 
 func _ready() -> void:
 	MessageBus.attack_mode_on.connect(_update)
@@ -80,17 +81,22 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 # Check if the mouse position is in navigation area (no boundaries)
 func _is_mouse_position_valid():
 	var mouse_pos = _layer0.local_to_map(_layer0.get_local_mouse_position())
+	var mouse_pos_layer1 = _layer1.local_to_map(_layer1.get_local_mouse_position()) - Vector2i(1,1) # The coords of the cell above
 	
 	# First check: mouse position in the map boundaries
 	if mouse_pos in _layer0.get_used_cells():
-		# Second check [Option 1]: cell on mouse position is navigable (check custom data layer)
-		if _layer0.get_cell_tile_data(mouse_pos).get_custom_data("is_navigable") == true:
-		# Second check [Option 2]: cell on mouse position is navigable (have Navigation Layer) - NEED CHANGE: we need a better solution to check if a cell is in Navigation Layer 1 (0)
+		# Second check [Option 1]: cell on mouse position is navigable (checks if the cell above in Layer1 has a collision polygon, so entities can't pass through it)
+		if _layer1.get_cell_tile_data(mouse_pos_layer1) == null || _layer1.get_cell_tile_data(mouse_pos_layer1).get_collision_polygons_count(0) == 0:
+	
+		## Second check [Option 2]: cell on mouse position is navigable (check custom data layer)
+		#if _layer0.get_cell_tile_data(mouse_pos).get_custom_data("is_navigable") == true:
+	
+		## Second check [Option 3]: cell on mouse position is navigable (have Navigation Layer) - NEED CHANGE: we need a better solution to check if a cell is in Navigation Layer 1 (0)
 		#if _layer0.get_cell_tile_data(mouse_pos).get_navigation_polygon(0) in nav_layer_value:
-		
+	
 			## Third check: mouse position isn't in the boundaries - Redundant, boundaries are not navigable
-			##if _layer0.get_cell_atlas_coords(mouse_pos) != border_value:
-				##return true
+			#if _layer0.get_cell_atlas_coords(mouse_pos) != border_value:
+				#return true
 			return true
 		else:
 			MessageBus.log.emit("I cannot reach that postion...there's something else on top")

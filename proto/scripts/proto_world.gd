@@ -47,7 +47,7 @@ func _place_boundaries():
 			if _layer0.get_cell_source_id(current_spot) == -1:
 				_layer0.set_cell(current_spot, 0, boundery)
 
-# Update Layer0 navigation layer under Layer1 blocks
+# Update Layer0 navigation/custom layer under Layer1 blocks
 ## Required to make the entities' navigationAgent2D avoid covered areas
 func _update_nav_layer():
 	pass # TODO
