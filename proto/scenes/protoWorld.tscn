@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/proto_world.gd" id="1_5nkip"]
 [ext_resource type="TileSet" uid="uid://7ajxq63cp64r" path="res://tileset/protoTexture.tres" id="2_1lmqu"]
-[ext_resource type="Script" path="res://scripts/navigation_updater.gd" id="3_gjila"]
+[ext_resource type="Script" path="res://scripts/utils/navigation_updater.gd" id="3_gjila"]
 [ext_resource type="PackedScene" uid="uid://bh5ngescx3d1a" path="res://scenes/protoPlayer.tscn" id="3_l26xo"]
 [ext_resource type="PackedScene" uid="uid://bdcb6ud3ys4rm" path="res://scenes/protoNpc.tscn" id="4_8mojw"]
 [ext_resource type="PackedScene" uid="uid://clf5scx5xs1ch" path="res://scenes/protoEnemy.tscn" id="4_uc0up"]
