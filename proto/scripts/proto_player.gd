@@ -96,7 +96,6 @@ func _is_mouse_position_valid():
 	
 			# Third check: mouse position isn't over the boundaries
 			if _layer0.get_cell_atlas_coords(mouse_pos) != border_value:
-				print(_layer0.get_cell_atlas_coords(mouse_pos))
 				return true
 			else:
 				MessageBus.log.emit("I cannot reach that postion...there's a border over there")
