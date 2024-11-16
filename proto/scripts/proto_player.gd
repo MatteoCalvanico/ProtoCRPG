@@ -4,6 +4,7 @@ extends CharacterBody2D
 # All this thing will be placed in a Singleton class or database
 const SPEED = 200
 const AP = 9 * 32 # 32 is the tile size
+const MAX_HEALTH = 100
 var _health = 50.0
 
 ## !!! Utils !!!
@@ -43,9 +44,9 @@ func _physics_process(delta: float) -> void:
 				self.velocity = Vector2.ZERO
 			move_and_slide()
 	
-	# Player heal
-	if Input.is_action_just_pressed("heal"):
-		MessageBus.health_change.emit(100)
+	# Player heal - Cost 1 AP
+	if Input.is_action_just_pressed("heal") && _used_ap/32 <= 8:
+		MessageBus.health_change.emit(MAX_HEALTH)
 
 
 # Prevents clicks from passing through the GUI - If the player clicks in the GUI area we don't move  

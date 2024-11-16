@@ -1,7 +1,7 @@
 ## This script is used in the terrain layer (Layer0) for update NavigationLayer
 extends TileMapLayer
 
-@onready var _layer1 = $"../Layer1" # Layer that has obstacle, otherwise we can use an array to contains all the layer with obstacles and fill it in the _ready
+@onready var _layer1 = $"../Layer1" # Layer that has obstacle, otherwise we can use an array to contains all the layers with obstacles and fill it at runtime in the _ready
 
 
 # Overrided function - represents whether the cell at coords needs to have its data updated in runtime
