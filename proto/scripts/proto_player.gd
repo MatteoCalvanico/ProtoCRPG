@@ -47,6 +47,8 @@ func _physics_process(delta: float) -> void:
 	# Player heal - Cost 1 AP
 	if Input.is_action_just_pressed("heal") && _used_ap/32 <= 8:
 		MessageBus.health_change.emit(MAX_HEALTH)
+	elif Input.is_action_just_pressed("heal") && _used_ap/32 >= 8: # Needed to avoid loop writing
+		MessageBus.log.emit("APs are finished")
 
 
 # Prevents clicks from passing through the GUI - If the player clicks in the GUI area we don't move  
