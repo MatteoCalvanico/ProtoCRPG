@@ -6,10 +6,10 @@ extends TileMapLayer
 
 # Overrided function - represents whether the cell at coords needs to have its data updated in runtime
 func _use_tile_data_runtime_update(coords: Vector2i) -> bool:
-	# We remove Vector2i(1,1) from the coord to take the right cell, and remove the nav layer from the bottom part
+	# We move down by Vector2i(1,1) from the coord to take the right cell, and remove the nav layer from the bottom part
 	return _is_cell_occupied(coords - Vector2i(1,1))
 
-# Overrided function
+# Overrided function - update the cell
 func _tile_data_runtime_update(coords: Vector2i, tile_data: TileData) -> void:
 	tile_data.set_navigation_polygon(0, null)
 
