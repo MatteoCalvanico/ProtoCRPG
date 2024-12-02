@@ -32,6 +32,13 @@ window/stretch/aspect="expand"
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
 
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://tileset/": "gray"
+}
+
 [input]
 
 left={
