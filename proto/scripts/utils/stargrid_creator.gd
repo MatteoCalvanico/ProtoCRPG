@@ -25,7 +25,7 @@ func _init(layer: TileMapLayer) -> void:
 	_starGrid.update() 
 	
 	## Start adding blocker - Remove spots where entity cannot stay or pass
-	#  Thanks to the nav_updater we simply check if the cell have a nav layer
+	#  Thanks to the nav_updater we simply check if the cell have a nav layer - TODO: Fix this, doesn't work
 	var used_cells = _tileMap.get_used_cells()
 	for cell in used_cells:
 		if _tileMap.get_cell_tile_data(cell).get_navigation_polygon(0).get_outline_count() == 0:
@@ -48,7 +48,6 @@ func go_to(from: Vector2i, to: Vector2i, whoMove: Object) -> Array[Vector2]:
 
 
 ## !!! Convertion functions !!!
-# TODO: try to test this
 # Convert a list of coords: map --> local --> global
 func coords_map_to_global(coords: Array[Vector2i], caller: Object) -> Array[Vector2]:
 	var new_coords_local: Array[Vector2] = []
