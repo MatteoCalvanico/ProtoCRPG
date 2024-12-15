@@ -41,18 +41,21 @@ func _get(property: StringName) -> Variant:
 	return null
 
 
-## Return the path found with the given coords @whoMove need to do  - If isn't possible to reach the target return null
+## Return the path found in global coordinate - If isn't possible to reach the target return empty array
 func go_to(from: Vector2i, to: Vector2i, whoMove: Object) -> Array[Vector2]:
-	return coords_map_to_global(_starGrid.get_id_path(coord_global_to_map(from, whoMove), coord_global_to_map(to, whoMove), false))
+	var path = _starGrid.get_id_path(coord_global_to_map(from, whoMove), coord_global_to_map(to, whoMove))
+	return coords_map_to_global(path, whoMove)
 
 
 ## !!! Convertion functions !!!
 # TODO: try to test this
 # Convert a list of coords: map --> local --> global
-func coords_map_to_global(coords: Array[Vector2i]) -> Array[Vector2]:
-	var new_coords: Array[Vector2] = []
-	new_coords.assign(coords.map(_tileMap.map_to_local))
-	return new_coords
+func coords_map_to_global(coords: Array[Vector2i], caller: Object) -> Array[Vector2]:
+	var new_coords_local: Array[Vector2] = []
+	new_coords_local.assign(coords.map(_tileMap.map_to_local))
+	var new_coords_global: Array[Vector2] = []
+	new_coords_global.assign(new_coords_local.map(caller.to_global))
+	return new_coords_global
 
 # Convert a single pair of coord: map <-- local <-- global
 func coord_global_to_map(coord: Vector2i, caller: Object) -> Vector2i:
