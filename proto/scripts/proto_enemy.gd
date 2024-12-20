@@ -19,6 +19,7 @@ func _ready() -> void:
 func update_path(starBuilder) -> void:
 	path = starBuilder.go_to(global_position, _player.global_position, self)
 	current_waypoint = 0
+	queue_redraw() # Draw path
 
 func _physics_process(delta: float) -> void:
 	# Check if the player has moved
@@ -42,7 +43,37 @@ func _physics_process(delta: float) -> void:
 		if current_waypoint >= path.size():
 			path.clear()
 	
-	move_and_slide()
+	queue_redraw()   # Draw Path
+	move_and_slide() # Move enemy
+
+# Utility function to draw enemy path
+func _draw() -> void:
+	if not path.is_empty():
+		# Draw complete path
+		for i in range(path.size() - 1):
+			var start = to_local(path[i])
+			var end = to_local(path[i + 1])
+			draw_line(start, end, Color(1, 0, 0, 0.5), 2.0)
+		
+		# Draw waypoint
+		for i in range(path.size()):
+			var point = to_local(path[i])
+			# Prev waypoint
+			if i < current_waypoint:
+				draw_circle(point, 3.0, Color(0.5, 0.5, 0.5, 0.5))
+			# Current waypoint
+			elif i == current_waypoint:
+				draw_circle(point, 5.0, Color(0, 1, 0, 1))
+				# Linea dal nemico al waypoint corrente
+				draw_line(Vector2.ZERO, point, Color(0, 1, 0, 0.5), 2.0)
+			# Future waypoint
+			else:
+				draw_circle(point, 3.0, Color(1, 1, 0, 0.7))
+		
+		# Target (Player position)
+		var player_pos = to_local(_player.global_position)
+		draw_circle(player_pos, 5.0, Color(0, 0, 1, 0.7))
+
 
 #
 #const SPEED = 100

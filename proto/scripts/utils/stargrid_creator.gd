@@ -9,7 +9,6 @@ class_name AStarGridBuilder extends Node
 var _starGrid= AStarGrid2D.new()
 
 
-
 ## Constructor - Initialize AStarGrid2D with layer information
 #  DON'T use this, instead use AStarGridBuilder.new() that already call this function
 func _init(layer: TileMapLayer) -> void:
@@ -42,6 +41,7 @@ func _get(property: StringName) -> Variant:
 
 
 ## Return the path found in global coordinate - If isn't possible to reach the target return empty array
+# TODO: Fix, i don't know why but count even the space where block are not present, even if the solid point are located in the right place
 func go_to(from: Vector2i, to: Vector2i, whoMove: Object) -> Array[Vector2]:
 	var path = _starGrid.get_id_path(coord_global_to_map(from, whoMove), coord_global_to_map(to, whoMove))
 	return coords_map_to_global(path, whoMove)
