@@ -81,7 +81,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	self.velocity = safe_velocity
 
-# Check if the mouse position is in navigation area (no boundaries or obstacles)
+## Check if the mouse position is in navigation area (no boundaries or obstacles)
 func _is_mouse_position_valid():
 	var mouse_pos = _layer0.local_to_map(_layer0.get_local_mouse_position())
 	var mouse_pos_layer1 = _layer1.local_to_map(_layer1.get_local_mouse_position()) - Vector2i(1,1) # The coords of the cell above
@@ -110,7 +110,7 @@ func _is_mouse_position_valid():
 		MessageBus.log.emit("I cannot reach that postion...")
 		return false
 
-# Move the player to the target position
+## Move the player to the target position [br]
 ## NEED FIX - Sometimes player get stuck and ap continue to decrese
 func _move(target_position: Vector2):
 	_navigator.target_position = target_position
@@ -153,6 +153,6 @@ func _reset():
 	_attack_mode = false
 	_target = self.global_position # Remove previus target
 
-# Change the player health
+## Change the player health
 func _change_health(value: float):
 	_health = value

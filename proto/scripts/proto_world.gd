@@ -34,7 +34,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-# Needed for create the world boundaries
+## Create the world boundaries
 func _place_boundaries():
 	var offsets = [ Vector2i(0,-1), Vector2i(0,1), Vector2i(-1,0), Vector2i(1,0)]
 	var usedCells = _layer0.get_used_cells()
@@ -47,7 +47,7 @@ func _place_boundaries():
 			if _layer0.get_cell_source_id(current_spot) == -1:
 				_layer0.set_cell(current_spot, 0, boundery)
 
-# Needed to stop the scene when the player enter in attack mode
+## Stop the scene when the player enter in attack mode [br]
 ## To work you need the root node with Process->Mode:Inherit - If you want to make an exception put Process->Mode:Always on all nodes you don't want to be paused 
 func toggle_pause():
 	get_tree().paused = !get_tree().paused

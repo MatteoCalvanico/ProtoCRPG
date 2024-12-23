@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	queue_redraw()   # Draw Path
 	move_and_slide() # Move enemy
 
-# Utility function to draw enemy path
+## Utility function to draw enemy path
 func _draw() -> void:
 	if not path.is_empty():
 		# Draw complete path

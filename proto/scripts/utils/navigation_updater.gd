@@ -1,5 +1,8 @@
-## This script is used in the terrain layer (Layer0) for update NavigationLayer
 extends TileMapLayer
+## This script is used in the terrain layer (Layer0) for update NavigationLayer
+##
+## Attach this script to the ground level of a scene to automatically remove obstacles from the NavigatioLayer
+
 
 @onready var _layer1 = $"../Layer1" # Layer that has obstacle, otherwise we can use an array to contains all the layers with obstacles and fill it at runtime in the _ready
 

@@ -1,14 +1,27 @@
 extends CharacterBody2D
+## Base class for all NPCs
+##
+## This class export two major variables:
+##  - [param interaction_distance]
+##  - [param player]
+## and one virtual major method:
+##  - [method Class._interact]
+##
+## Usage:
+## [codeblock]
+## extends "base/base_npc.gd"
+## ...
+## func _interact():
+##     something
+## [/codeblock]
 
 @onready var _click_area = $ClickArea
 @onready var _text_label = $TextLabel
 @onready var _text_timer = $TextTimer
 
-# MAX distance from the NPC to be able to interact with it
-@export var interaction_distance = 70.0 
+@export var interaction_distance = 70.0 ## MAX distance from the NPC to be able to interact with it
 
-# Player node in the scene
-@export var player: CharacterBody2D = null
+@export var player: CharacterBody2D = null ## Player node in the scene
 
 
 func _ready() -> void:
@@ -24,7 +37,7 @@ func _npc_clicked(viewport: Viewport, event: InputEvent, shape_idx: int):
 		else:
 			MessageBus.log.emit("I'm too far away")
 
-# Virtual function to be overriden by child classes
+## Virtual function to be overriden by child classes
 func _interact():
 	pass
 
