@@ -75,7 +75,7 @@ func _draw() -> void:
 		draw_circle(player_pos, 5.0, Color(0, 0, 1, 0.7))
 
 
-#
+## Old Code
 #const SPEED = 100
 #
 #@onready var _navigator = $NavigationAgent2D
